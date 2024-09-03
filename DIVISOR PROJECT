@@ -1,0 +1,57 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    std::cout << "This program will print all the divisors of a positive integer.\n";
+    std::cout << "Enter a positive integer: ";
+
+    int num;
+    std::cin >> num;
+
+    std::vector<int> divisors;
+
+    for (int i = 1; i <= num; i++) {
+        if (num % i == 0) {
+            divisors.push_back(i);
+        }
+    }
+
+    std::cout << "The divisors of " << num << " are: \n";
+
+    // Print divisors in decreasing order
+    std::sort(divisors.rbegin(), divisors.rend());
+    for (int i = 0; i < divisors.size(); i++) {
+        std::cout << divisors[i] << std::endl;
+    }
+
+    char response;
+    std::cout << "Would you like to see the divisors of another number? (Y/N): ";
+    std::cin >> response;
+
+    while (response == 'Y' || response == 'y') {
+        std::cout << "Enter a positive integer: ";
+        std::cin >> num;
+
+        divisors.clear();
+
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                divisors.push_back(i);
+            }
+        }
+
+        std::cout << "The divisors of " << num << " are: \n";
+
+        // Print divisors in decreasing order
+        std::sort(divisors.rbegin(), divisors.rend());
+        for (int i = 0; i < divisors.size(); i++) {
+            std::cout << divisors[i] << std::endl;
+        }
+
+        std::cout << "Would you like to see the divisors of another number? (Y/N): ";
+        std::cin >> response;
+    }
+
+    return 0;
+}
